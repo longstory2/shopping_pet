@@ -18,4 +18,7 @@ app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
+// apis
+app.use('/api/customer', require('./api/customer.js'));
+
 app.use('/api/admin', require('./api/admin.js'));
