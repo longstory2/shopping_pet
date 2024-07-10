@@ -72,7 +72,7 @@ class Login extends Component {
                       </tr>
                       <tr>
                         <td></td>
-                        <div className="col-12" >
+                        <div className="col-12">
                           <td>
                             <input
                               type="submit"

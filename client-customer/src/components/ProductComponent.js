@@ -45,15 +45,14 @@ class Product extends Component {
         }
     }
     // apis
-    apiGetProductsByCatID(cid) {
-        axios.get('/api/customer/products/category/' + cid).then((res) => {
+    apiGetProductsByKeyword(keyword) {
+        axios.get('/api/customer/products/search/' + keyword).then((res) => {
             const result = res.data;
             this.setState({ products: result });
         });
     }
-    // apis
-    apiGetProductsByKeyword(keyword) {
-        axios.get('/api/customer/products/search/' + keyword).then((res) => {
+    apiGetProductsByCatID(cid) {
+        axios.get('/api/customer/products/category/' + cid).then((res) => {
             const result = res.data;
             this.setState({ products: result });
         });

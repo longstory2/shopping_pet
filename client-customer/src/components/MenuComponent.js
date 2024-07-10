@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import withRouter from '../utils/withRouter';
 
+
 class Menu extends Component {
     constructor(props) {
         super(props);
@@ -39,16 +40,15 @@ class Menu extends Component {
         this.apiGetCategories();
     }
     // apis
+    btnSearchClick(e) {
+        e.preventDefault();
+        this.props.navigate('/product/search/' + this.state.txtKeyword);
+    }
     apiGetCategories() {
         axios.get('/api/customer/categories').then((res) => {
             const result = res.data;
             this.setState({ categories: result });
         });
-    }
-    // event-handlers
-    btnSearchClick(e) {
-        e.preventDefault();
-        this.props.navigate('/product/search/' + this.state.txtKeyword);
     }
 }
 export default withRouter(Menu);

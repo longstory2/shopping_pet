@@ -8,6 +8,7 @@ const JwtUtil = require('../utils/JwtUtil');
 const ProductDAO = require('../models/ProductDAO');
 const AdminDAO = require('../models/AdminDAO');
 const CategoryDAO = require('../models/CategoryDAO');
+const OrderDAO = require('../models/OrderDAO');
 // login
 router.post('/login', async function (req, res) {
   const username = req.body.username;
@@ -100,6 +101,18 @@ router.put('/products/:id', JwtUtil.checkToken, async function (req, res) {
   const category = await CategoryDAO.selectByID(cid);
   const product = { _id: _id, name: name, price: price, image: image, cdate: now, category: category };
   const result = await ProductDAO.update(product);
+  res.json(result);
+});
+// order
+router.get('/orders', JwtUtil.checkToken, async function (req, res) {
+  const orders = await OrderDAO.selectAll();
+  res.json(orders);
+});
+// order
+router.put('/orders/status/:id', JwtUtil.checkToken, async function (req, res) {
+  const _id = req.params.id;
+  const newStatus = req.body.status;
+  const result = await OrderDAO.update(_id, newStatus);
   res.json(result);
 });
 module.exports = router;

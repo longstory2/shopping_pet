@@ -6,15 +6,15 @@ import Main from './components/MainComponent';
 import MyProvider from './contexts/MyProvider';
 
 class App extends Component {
-render () {
-return (
-   <MyProvider>
-       <Login/>
-       <BrowserRouter>
-        <Main />
+  render() {
+    return (
+      <MyProvider>
+        <Login />
+        <BrowserRouter>
+          <Main />
         </BrowserRouter>
-   </MyProvider>
- ) ;
- }
- }
- export default App ;
+      </MyProvider>
+    );
+  }
+}
+export default App;
