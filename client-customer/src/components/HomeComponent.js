@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import FooterComponent from './FooterComponent';
 
 class Home extends Component {
     constructor(props) {
@@ -43,6 +44,7 @@ class Home extends Component {
                         {hotprods}
                     </div>
                     : <div />}
+                <FooterComponent />
             </div>
         );
     }

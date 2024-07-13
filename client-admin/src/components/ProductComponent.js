@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import "../assets/SCSS/ProductComponent.scss";
 import MyContext from '../contexts/MyContext';
+import FooterComponent from './FooterComponent';
 import ProductDetail from './ProductDetailComponent';
 
 class Product extends Component {
     static contextType = MyContext; // using this.context to access global state
+
     constructor(props) {
         super(props);
         this.state = {
@@ -14,6 +17,7 @@ class Product extends Component {
             itemSelected: null
         };
     }
+
     render() {
         const prods = this.state.products.map((item) => {
             return (
@@ -27,6 +31,7 @@ class Product extends Component {
                 </tr>
             );
         });
+
         const pagination = Array.from({ length: this.state.noPages }, (_, index) => {
             if ((index + 1) === this.state.curPage) {
                 return (<span key={index}>| <b>{index + 1}</b> |</span>);
@@ -34,20 +39,23 @@ class Product extends Component {
                 return (<span key={index} className="link" onClick={() => this.lnkPageClick(index + 1)}>| {index + 1} |</span>);
             }
         });
+
         return (
             <div>
+                <h2 className="text-center1">PRODUCT LIST</h2>
                 <div className="float-left">
-                    <h2 className="text-center">PRODUCT LIST</h2>
-                    <table className="datatable" border="1">
-                        <tbody>
-                            <tr className="datatable">
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Creation date</th>
-                                <th>Category</th>
-                                <th>Image</th>
+                    <table className="table product-component">
+                        <thead>
+                            <tr className="thead-dark">
+                                <th className="table-dark">ID</th>
+                                <th className="table-dark">Name</th>
+                                <th className="table-dark">Price</th>
+                                <th className="table-dark">Creation date</th>
+                                <th className="table-dark">Category</th>
+                                <th className="table-dark">Image</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             {prods}
                             <tr>
                                 <td colSpan="6">{pagination}</td>
@@ -55,26 +63,30 @@ class Product extends Component {
                         </tbody>
                     </table>
                 </div>
-                <div className="inline" />
+                <div className="inline"></div>
                 <ProductDetail item={this.state.itemSelected} curPage={this.state.curPage} updateProducts={this.updateProducts} />
-                <div className="float-clear" />
+                <div className="float-clear"></div>
+                <FooterComponent />
             </div>
         );
     }
-    updateProducts = (products, noPages, curPage) => { // arrow-function
+
+    updateProducts = (products, noPages, curPage) => {
         this.setState({ products: products, noPages: noPages, curPage: curPage });
     }
+
     componentDidMount() {
         this.apiGetProducts(this.state.curPage);
     }
-    // event-handlers
+
     lnkPageClick(index) {
         this.apiGetProducts(index);
     }
+
     trItemClick(item) {
         this.setState({ itemSelected: item });
     }
-    // apis
+
     apiGetProducts(page) {
         const config = { headers: { 'x-access-token': this.context.token } };
         axios.get('/api/admin/products?page=' + page, config).then((res) => {
@@ -83,4 +95,5 @@ class Product extends Component {
         });
     }
 }
+
 export default Product;

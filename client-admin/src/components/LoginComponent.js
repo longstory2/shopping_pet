@@ -1,10 +1,10 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import '../assets/Login.scss';
+import '../assets/SCSS/Login.scss';
 import MyContext from '../contexts/MyContext';
-
 class Login extends Component {
   static contextType = MyContext; // using this.context to access global state
 
@@ -72,7 +72,7 @@ class Login extends Component {
                       </tr>
                       <tr>
                         <td></td>
-                        <div className="col-12">
+                        <div className="col-12" >
                           <td>
                             <input
                               type="submit"

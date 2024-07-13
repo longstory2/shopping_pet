@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import MyContext from '../contexts/MyContext';
+import "../assets/SCSS/ProductDetail.scss";
 
+import MyContext from '../contexts/MyContext';
 class ProductDetail extends Component {
     static contextType = MyContext; // using this.context to access global state
+
     constructor(props) {
         super(props);
         this.state = {
@@ -13,9 +15,9 @@ class ProductDetail extends Component {
             txtPrice: 0,
             cmbCategory: '',
             imgProduct: '',
-            txtQuantity: 1,
         };
     }
+
     render() {
         const cates = this.state.categories.map((cate) => {
             if (this.props.item != null) {
@@ -24,47 +26,58 @@ class ProductDetail extends Component {
                 return (<option key={cate._id} value={cate._id}>{cate.name}</option>);
             }
         });
+
         return (
             <div className="float-right">
                 <h2 className="text-center">PRODUCT DETAIL</h2>
                 <form>
-                    <table>
+                    <table className="table">
                         <tbody>
                             <tr>
                                 <td>ID</td>
-                                <td><input type="text" value={this.state.txtID} onChange={(e) => { this.setState({ txtID: e.target.value }) }} readOnly={true} /></td>
+                                <td className="input-group mb-3">
+                                    <input type="text" value={this.state.txtID} onChange={(e) => { this.setState({ txtID: e.target.value }) }} readOnly={true} />
+                                </td>
                             </tr>
                             <tr>
                                 <td>Name</td>
-                                <td><input type="text" value={this.state.txtName} onChange={(e) => { this.setState({ txtName: e.target.value }) }} /></td>
+                                <td className="input-group mb-3">
+                                    <input type="text" value={this.state.txtName} onChange={(e) => { this.setState({ txtName: e.target.value }) }} />
+                                </td>
                             </tr>
                             <tr>
                                 <td>Price</td>
-                                <td><input type="text" value={this.state.txtPrice} onChange={(e) => { this.setState({ txtPrice: e.target.value }) }} /></td>
+                                <td className="input-group mb-3">
+                                    <input type="text" value={this.state.txtPrice} onChange={(e) => { this.setState({ txtPrice: e.target.value }) }} />
+                                </td>
                             </tr>
                             <tr>
                                 <td>Image</td>
-                                <td><input type="file" name="fileImage" accept="image/jpeg, image/png, image/gif" onChange={(e) => this.previewImage(e)} /></td>
+                                <td className="input-group mb-3">
+                                    <input type="file" name="fileImage" accept="image/jpeg, image/png, image/gif" onChange={(e) => this.previewImage(e)} />
+                                </td>
                             </tr>
                             <tr>
                                 <td>Category</td>
-                                <td><select onChange={(e) => { this.setState({ cmbCategory: e.target.value }) }}><option value='select'>--select--</option>{cates}</select></td>
-                            </tr>
-                            <tr>
-                                <td align="right">Quantity:</td>
-                                <td><input type="number" min="1" max="99" value={this.state.txtQuantity} onChange={(e) => { this.setState({ txtQuantity: e.target.value }) }} /></td>
+                                <td className="input-group mb-3">
+                                    <select onChange={(e) => { this.setState({ cmbCategory: e.target.value }) }}>
+                                        <option value='select'>--select--</option>
+                                        {cates}
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <input type="submit" value="ADD NEW" onClick={(e) => this.btnAddClick(e)} />
-                                    <input type="submit" value="UPDATE" onClick={(e) => this.btnUpdateClick(e)} />
-                                    <input type="submit" value="DELETE" onClick={(e) => this.btnDeleteClick(e)} />
-                                    <input type="submit" value="ADD TO CART" onClick={(e) => this.btnAdd2CartClick(e)} />
+                                    <input type="submit" value="ADD NEW" className="btn btn-primary" onClick={(e) => this.btnAddClick(e)} />
+                                    <input type="submit" value="UPDATE" className="btn btn-warning" onClick={(e) => this.btnUpdateClick(e)} />
+                                    <input type="submit" value="DELETE" className="btn btn-danger" onClick={(e) => this.btnDeleteClick(e)} />
                                 </td>
                             </tr>
                             <tr>
-                                <td colSpan="2"><img src={this.state.imgProduct} width="300px" height="300px" alt="" /></td>
+                                {/* <td >
+                                    {this.state.imgProduct && <img src={this.state.imgProduct}width="100px" height="100px" className="img-preview" alt="Preview" />}
+                                </td> */}
                             </tr>
                         </tbody>
                     </table>
@@ -72,9 +85,11 @@ class ProductDetail extends Component {
             </div>
         );
     }
+
     componentDidMount() {
         this.apiGetCategories();
     }
+
     componentDidUpdate(prevProps) {
         if (this.props.item !== prevProps.item) {
             this.setState({
@@ -86,7 +101,7 @@ class ProductDetail extends Component {
             });
         }
     }
-    // event-handlers
+
     previewImage(e) {
         const file = e.target.files[0];
         if (file) {
@@ -97,7 +112,7 @@ class ProductDetail extends Component {
             reader.readAsDataURL(file);
         }
     }
-    // apis
+
     apiGetCategories() {
         const config = { headers: { 'x-access-token': this.context.token } };
         axios.get('/api/admin/categories', config).then((res) => {
@@ -105,7 +120,7 @@ class ProductDetail extends Component {
             this.setState({ categories: result });
         });
     }
-    // event-handlers
+
     btnAddClick(e) {
         e.preventDefault();
         const name = this.state.txtName;
@@ -119,7 +134,7 @@ class ProductDetail extends Component {
             alert('Please input name and price and category and image');
         }
     }
-    // apis
+
     apiPostProduct(prod) {
         const config = { headers: { 'x-access-token': this.context.token } };
         axios.post('/api/admin/products/', prod, config).then((res) => {
@@ -132,7 +147,7 @@ class ProductDetail extends Component {
             }
         });
     }
-    // event-handlers
+
     btnUpdateClick(e) {
         e.preventDefault();
         const id = this.state.txtID;
@@ -148,7 +163,6 @@ class ProductDetail extends Component {
         }
     }
 
-    // apis
     apiPutProduct(id, prod) {
         const config = { headers: { 'x-access-token': this.context.token } };
         axios.put('/api/admin/products/' + id, prod, config).then((res) => {
@@ -162,7 +176,6 @@ class ProductDetail extends Component {
         });
     }
 
-    // event-handlers
     btnDeleteClick(e) {
         e.preventDefault();
         if (window.confirm('ARE YOU SURE?')) {
@@ -174,7 +187,7 @@ class ProductDetail extends Component {
             }
         }
     }
-    // apis
+
     apiDeleteProduct(id) {
         const config = { headers: { 'x-access-token': this.context.token } };
         axios.delete('/api/admin/products/' + id, config).then((res) => {
@@ -204,25 +217,6 @@ class ProductDetail extends Component {
             }
         });
     }
-    // event-handlers
-    btnAdd2CartClick(e) {
-        e.preventDefault();
-        const product = this.state.product;
-        const quantity = parseInt(this.state.txtQuantity);
-        if (quantity) {
-            const mycart = this.context.mycart;
-            const index = mycart.findIndex(x => x.product._id === product._id); // check if the _id exists in mycart
-            if (index === -1) { // not found, push newItem
-                const newItem = { product: product, quantity: quantity };
-                mycart.push(newItem);
-            } else { // increasing the quantity
-                mycart[index].quantity += quantity;
-            }
-            this.context.setMycart(mycart);
-            alert('OK BABY!');
-        } else {
-            alert('Please input quantity');
-        }
-    }
 }
+
 export default ProductDetail;

@@ -2,38 +2,54 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import MyContext from '../contexts/MyContext';
 import withRouter from '../utils/withRouter';
+//import '../assets/SCSS';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Login extends Component {
     static contextType = MyContext; // using this.context to access global state
     constructor(props) {
         super(props);
         this.state = {
-            txtUsername: 'sonkk',
-            txtPassword: '123'
+            txtUsername: '123',
+            txtPassword: '132'
         };
     }
     render() {
         return (
-            <div className="align-center">
-                <h2 className="text-center">CUSTOMER LOGIN</h2>
-                <form>
-                    <table className="align-center">
-                        <tbody>
-                            <tr>
-                                <td>Username</td>
-                                <td><input type="text" value={this.state.txtUsername} onChange={(e) => { this.setState({ txtUsername: e.target.value }) }} /></td>
-                            </tr>
-                            <tr>
-                                <td>Password</td>
-                                <td><input type="password" value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }} /></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><input type="submit" value="LOGIN" onClick={(e) => this.btnLoginClick(e)} /></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
+            <div className="login-container align-center">
+                <div className="login-content row">
+                    <h2 className="col-12 text-login">CUSTOMER LOGIN</h2>
+                    <form>
+                        <table className="align-center-1">
+                            <tbody>
+                                <div className="col-12 form-group login-input">
+                                    <tr>
+                                        <td>Username</td>
+                                        <td>
+                                            <input
+                                                type="text"
+                                                className="form-control-1"
+                                                value={this.state.txtUsername} onChange={(e) => { this.setState({ txtUsername: e.target.value }) }} /></td>
+                                    </tr>
+                                </div>
+                                <div className="col-12 form-group login-input">
+                                    <tr>
+                                        <td>Password</td>
+                                        <td className='custom-input'>
+                                            <input
+                                                className="form-control-2"
+                                                type="password" value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }} /></td>
+                                    </tr>
+                                </div>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="submit" value="LOGIN" onClick={(e) => this.btnLoginClick(e)} /></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
             </div>
         );
     }

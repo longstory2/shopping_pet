@@ -24,7 +24,7 @@ class ProductDetail extends Component {
                             <form>
                                 <table>
                                     <tbody>
-                                        <tr>
+                                        <tr hidden>
                                             <td align="right">ID:</td>
                                             <td>{prod._id}</td>
                                         </tr>

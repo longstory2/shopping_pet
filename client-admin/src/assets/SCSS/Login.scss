@@ -6,7 +6,7 @@ body {
 }
 
 .login-background {
-    background: url('test.jpg') no-repeat;
+    background: url('../Image/test.jpg') no-repeat;
     height: 100vh;
     background-position: center;
     background-size: cover;
@@ -21,6 +21,18 @@ body {
         padding: 20px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
+        .login-input {
+            .custom-input {
+                position: relative;
+
+                i {
+                    position: relative;
+                    right: -196px;
+                    top: -39px;
+                }
+            }
+        }
+
         .login-content {
             padding: 10px;
 
@@ -31,6 +43,7 @@ body {
                 padding-top: 10px;
                 margin-bottom: 20px;
                 color: #333;
+
             }
 
             .form-group {
@@ -58,7 +71,7 @@ body {
                 color: #333;
                 box-sizing: border-box;
                 transition: all 0.3s ease;
-                //padding-right: 40px;
+                padding-right: 40px;
 
                 &:focus {
                     border-color: #007bff;
@@ -69,14 +82,10 @@ body {
 
             }
 
-            .col-12 .td .input {
-                padding-left: 30%;
-                padding-right: 30%;
-            }
-
             span {
                 position: absolute;
                 padding: 10px;
+                display: flex;
             }
         }
 
@@ -92,6 +101,8 @@ body {
             border: none;
             transition: all 0.3s ease;
 
+
         }
+
     }
 }
