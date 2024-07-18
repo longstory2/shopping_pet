@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import '../assets/SCSS/CustomerLogin.scss';
 import MyContext from '../contexts/MyContext';
 import withRouter from '../utils/withRouter';
-//import '../assets/SCSS';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Login extends Component {
     static contextType = MyContext; // using this.context to access global state
