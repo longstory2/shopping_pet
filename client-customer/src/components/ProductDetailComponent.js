@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import withRouter from '../utils/withRouter';
 import MyContext from '../contexts/MyContext';
-
+import FooterComponent from './FooterComponent';
 class ProductDetail extends Component {
     static contextType = MyContext; // using this.context to access global state
     constructor(props) {
@@ -16,58 +16,51 @@ class ProductDetail extends Component {
         const prod = this.state.product;
         if (prod != null) {
             return (
-                <div className="align-center">
-                    <h2 className="text-center">PRODUCT DETAILS</h2>
-                    <figure className="caption-right">
-                        <img src={"data:image/jpg;base64," + prod.image} width="400px" height="400px" alt="" />
-                        <figcaption>
-                            <form>
-                                <table>
-                                    <tbody>
-                                        <tr hidden>
-                                            <td align="right">ID:</td>
-                                            <td>{prod._id}</td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">Name:</td>
+                <div>
+                    <div className="align-center">
+                        <h2 className="text-center">PRODUCT DETAILS</h2>
+                        <figure className="caption-right">
+                            <img src={"data:image/jpg;base64," + prod.image} width="350px" height="auto" alt="" />
+                            <figcaption className='content'>
+                                <form>
+                                    <table>
+                                        <tbody>
+                                            <h4 align="right">Name:</h4>
                                             <td>{prod.name}</td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">Price:</td>
-                                            <td>{prod.price}</td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">Category:</td>
-                                            <td>{prod.category.name}</td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">Quantity:</td>
-                                            <td><input type="number" min="1" max="99" value={this.state.txtQuantity} onChange={(e) => { this.setState({ txtQuantity: e.target.value }) }} /></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td><input type="submit" value="ADD TO CART" onClick={(e) => this.btnAdd2CartClick(e)} /></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </form>
-                        </figcaption>
-                    </figure>
+                                            <tr>
+                                                <h4 align="right">Price:</h4>
+                                                <td>{prod.price}</td>
+                                            </tr>
+                                            <tr>
+                                                <h4 align="right">Category:</h4>
+                                                <td>{prod.category.name}</td>
+                                            </tr>
+                                            <tr>
+                                                <h4 align="right">Quantity:</h4>
+                                                <td><input type="number" min="1" max="99" value={this.state.txtQuantity} onChange={(e) => { this.setState({ txtQuantity: e.target.value }) }} /></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <h4><input class="btn btn-success" value="ADD TO CART" onClick={(e) => this.btnAdd2CartClick(e)} /></h4>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </figcaption>
+                        </figure>
+
+                    </div>
+                    <FooterComponent />
                 </div>
             );
+
         }
         return (<div />);
+
     }
     componentDidMount() {
         const params = this.props.params;
         this.apiGetProduct(params.id);
-    }
-    // apis
-    apiGetProduct(id) {
-        axios.get('/api/customer/products/' + id).then((res) => {
-            const result = res.data;
-            this.setState({ product: result });
-        });
     }
     // event-handlers
     btnAdd2CartClick(e) {
@@ -88,6 +81,13 @@ class ProductDetail extends Component {
         } else {
             alert('Please input quantity');
         }
+    }
+    // apis
+    apiGetProduct(id) {
+        axios.get('/api/customer/products/' + id).then((res) => {
+            const result = res.data;
+            this.setState({ product: result });
+        });
     }
 }
 export default withRouter(ProductDetail);

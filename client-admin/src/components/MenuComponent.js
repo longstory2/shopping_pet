@@ -1,5 +1,5 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import image from '../assets/Image/logo_vanlang.png';
@@ -11,9 +11,9 @@ class Menu extends Component {
     return (
       <div className="border-bottom">
         <div className="float-left">
-          <div className='image'>
-            <img src={image} className="logo" alt="Logo" />
-          </div>
+        <div className='image'>
+              <img src={image} className="logo" alt="Logo" />
+           </div>
           <ul className="menu">
             <li className="menu"><Link to='/admin/home'>Home</Link></li>
             <li className="menu"><Link to='/admin/category'>Category</Link></li>

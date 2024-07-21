@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import MyContext from '../contexts/MyContext';
 class CategoryDetail extends Component {
@@ -16,74 +16,74 @@ class CategoryDetail extends Component {
   render() {
     return (
       <div className="page-container">
-        <div className="main-content"></div>
-        <div className="float-right">
-          <h2 className="text-center">CATEGORY DETAIL</h2>
-          <form>
-            <table className="table">
-              <tbody>
-                <tr>
-                  <td>ID</td>
-                  <td>
-                    <div className="input-group mb-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={this.state.txtID}
-                        onChange={(e) => { this.setState({ txtID: e.target.value }) }}
-
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Name</td>
-                  <td>
-                    <div className="input-group mb-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={this.state.txtName}
-                        onChange={(e) => { this.setState({ txtName: e.target.value }) }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>
-                    <div className="d-flex gap-2">
-                      <input
-                        type="submit"
-                        className="btn btn-primary"
-                        value="ADD NEW"
-                        onClick={(e) => this.btnAddClick(e)}
-                      />
-                      <input
-                        type="submit"
-                        className="btn btn-warning"
-                        value="UPDATE"
-                        onClick={(e) => this.btnUpdateClick(e)}
-                      />
-                      <input
-                        type="submit"
-                        className="btn btn-danger"
-                        value="DELETE"
-                        onClick={(e) => this.btnDeleteClick(e)}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
-
-        </div>
+      <div className="main-content"></div>
+      <div className="float-right">
+        <h2 className="text-center">CATEGORY DETAIL</h2>
+        <form>
+          <table className="table">
+            <tbody>
+              <tr>
+                <td>ID</td>
+                <td>
+                  <div className="input-group mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={this.state.txtID}
+                      onChange={(e) => { this.setState({ txtID: e.target.value }) }}
+                    
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td>
+                  <div className="input-group mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={this.state.txtName}
+                      onChange={(e) => { this.setState({ txtName: e.target.value }) }}
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <div className="d-flex gap-2">
+                    <input
+                      type="submit"
+                      className="btn btn-primary"
+                      value="ADD NEW"
+                      onClick={(e) => this.btnAddClick(e)}
+                    />
+                    <input
+                      type="submit"
+                      className="btn btn-warning"
+                      value="UPDATE"
+                      onClick={(e) => this.btnUpdateClick(e)}
+                    />
+                     <input
+      type="submit"
+      className="btn btn-danger"
+      value="DELETE"
+      onClick={(e) => this.btnDeleteClick(e)}
+    />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+        
       </div>
-
+      </div>
+      
     );
   }
-
+  
   componentDidUpdate(prevProps) {
     if (this.props.item !== prevProps.item) {
       this.setState({ txtID: this.props.item._id, txtName: this.props.item.name });

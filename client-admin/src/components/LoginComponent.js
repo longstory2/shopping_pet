@@ -1,6 +1,6 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import axios from 'axios';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import '../assets/SCSS/Login.scss';

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import withRouter from '../utils/withRouter';
+import FooterComponent from './FooterComponent';
 
 class Product extends Component {
     constructor(props) {
@@ -15,16 +16,21 @@ class Product extends Component {
             return (
                 <div key={item._id} className="inline">
                     <figure>
-                        <Link to={'/product/' + item._id}><img src={"data:image/jpg;base64," + item.image} width="300px" height="300px" alt="" /></Link>
+                        <Link to={'/product/' + item._id}><img src={"data:image/jpg;base64," + item.image} width="250px" height="AUTO" alt="" /></Link>
                         <figcaption className="text-center">{item.name}<br />Price: {item.price}</figcaption>
                     </figure>
                 </div>
             );
         });
         return (
-            <div className="text-center">
-                <h2 className="text-center">LIST PRODUCTS</h2>
-                {prods}
+            <div>
+                <div className='align-center'>
+                    <div className="text-center">
+                        <h2 className="text-center">LIST PRODUCTS</h2>
+                        {prods}
+                    </div>
+                </div>
+                <FooterComponent />
             </div>
         );
     }

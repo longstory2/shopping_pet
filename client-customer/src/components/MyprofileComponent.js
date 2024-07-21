@@ -23,30 +23,29 @@ class Myprofile extends Component {
                 <form>
                     <table className="align-center">
                         <tbody>
-                            <tr>
-                                <td>Username</td>
-                                <td><input type="text" value={this.state.txtUsername} onChange={(e) => { this.setState({ txtUsername: e.target.value }) }} /></td>
-                            </tr>
-                            <tr>
-                                <td>Password</td>
-                                <td><input type="password" value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }} /></td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td><input type="text" value={this.state.txtName} onChange={(e) => { this.setState({ txtName: e.target.value }) }} /></td>
-                            </tr>
-                            <tr>
-                                <td>Phone</td>
-                                <td><input type="tel" value={this.state.txtPhone} onChange={(e) => { this.setState({ txtPhone: e.target.value }) }} /></td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td><input type="email" value={this.state.txtEmail} onChange={(e) => { this.setState({ txtEmail: e.target.value }) }} /></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><input type="submit" value="UPDATE" onClick={(e) => this.btnUpdateClick(e)} /></td>
-                            </tr>
+                            <div class="form-floating">
+                                <input class="form-control" id="floatingInput" placeholder="Username" type="text" value={this.state.txtUsername} onChange={(e) => { this.setState({ txtUsername: e.target.value }) }} />
+                                <label for="floatingInput">Username</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="floatingInput" placeholder="Password" type="password" value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }} />
+                                <label for="floatingInput">Password</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="floatingInput" placeholder="Name" type="text" value={this.state.txtName} onChange={(e) => { this.setState({ txtName: e.target.value }) }} />
+                                <label for="floatingInput">Name</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="floatingInput" placeholder="Phone" type="tel" value={this.state.txtPhone} onChange={(e) => { this.setState({ txtPhone: e.target.value }) }} />
+                                <label for="floatingInput">Phone</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="floatingInput" placeholder="Email" type="email" value={this.state.txtEmail} onChange={(e) => { this.setState({ txtEmail: e.target.value }) }} />
+                                <label for="floatingInput">Email</label>
+                            </div>
+                            <div className='btn'>
+                                <input class="btn btn-primary active" type="submit" value="UPDATE" onClick={(e) => this.btnUpdateClick(e)} />
+                            </div>
                         </tbody>
                     </table>
                 </form>

@@ -11,14 +11,14 @@ class Mycart extends Component {
             return (
                 <tr key={item.product._id} className="datatable">
                     <td>{index + 1}</td>
-                    <td>{item.product._id}</td>
+
                     <td>{item.product.name}</td>
                     <td>{item.product.category.name}</td>
                     <td><img src={"data:image/jpg;base64," + item.product.image} width="70px" height="70px" alt="" /></td>
                     <td>{item.product.price}</td>
                     <td>{item.quantity}</td>
                     <td>{item.product.price * item.quantity}</td>
-                    <td><span className="link" onClick={() => this.lnkRemoveClick(item.product._id)}>Remove</span></td>
+                    <td><button className="btn btn-danger" onClick={() => this.lnkRemoveClick(item.product._id)}>Remove</button></td>
                 </tr>
             );
         });
@@ -26,10 +26,9 @@ class Mycart extends Component {
             <div className="align-center">
                 <h2 className="text-center">ITEM LIST</h2>
                 <table className="datatable" border="1">
-                    <tbody>
+                    <thead>
                         <tr className="datatable">
                             <th>No.</th>
-                            <th>ID</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Image</th>
@@ -38,12 +37,15 @@ class Mycart extends Component {
                             <th>Amount</th>
                             <th>Action</th>
                         </tr>
-                        {mycart}
+                    </thead>
+                    {mycart}
+                    <tbody>
                         <tr>
-                            <td colSpan="6"></td>
+                            <td colSpan="5"></td>
                             <td>Total</td>
                             <td>{CartUtil.getTotal(this.context.mycart)}</td>
-                            <td><span className="link" onClick={() => this.lnkCheckoutClick()}>CHECKOUT</span></td>
+                            <td><button className="btn btn-primary" onClick={() => this.lnkCheckoutClick()}>Checkout</button></td>
+                            {/* <td><span className="link" onClick={() => this.lnkCheckoutClick()}>CHECKOUT</span></td> */}
                         </tr>
                     </tbody>
                 </table>

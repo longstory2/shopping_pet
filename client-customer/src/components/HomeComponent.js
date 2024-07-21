@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import FooterComponent from './FooterComponent';
-
+import '../assets/SCSS/Home.scss';
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -16,7 +16,7 @@ class Home extends Component {
             return (
                 <div key={item._id} className="inline">
                     <figure>
-                        <Link to={'/product/' + item._id}><img src={"data:image/jpg;base64," + item.image} width="300px" height="300px" alt="" /></Link>
+                        <Link to={'/product/' + item._id}><img src={"data:image/jpg;base64," + item.image} width="auto" height="250px" alt="" /></Link>
                         <figcaption className="text-center">{item.name}<br />Price: {item.price}</figcaption>
                     </figure>
                 </div>
@@ -26,7 +26,7 @@ class Home extends Component {
             return (
                 <div key={item._id} className="inline">
                     <figure>
-                        <Link to={'/product/' + item._id}><img src={"data:image/jpg;base64," + item.image} width="300px" height="300px" alt="" /></Link>
+                        <Link to={'/product/' + item._id}><img src={"data:image/jpg;base64," + item.image} width="auto" height="250px" alt="" /></Link>
                         <figcaption className="text-center">{item.name}<br />Price: {item.price}</figcaption>
                     </figure>
                 </div>

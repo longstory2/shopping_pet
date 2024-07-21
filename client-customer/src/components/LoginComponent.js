@@ -1,55 +1,45 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import '../assets/SCSS/CustomerLogin.scss';
 import MyContext from '../contexts/MyContext';
 import withRouter from '../utils/withRouter';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+//import '../assets/SCSS';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import FooterComponent from './FooterComponent';
 
 class Login extends Component {
     static contextType = MyContext; // using this.context to access global state
     constructor(props) {
         super(props);
         this.state = {
-            txtUsername: '123',
-            txtPassword: '132'
+            txtUsername: 'long',
+            txtPassword: '123'
         };
     }
     render() {
         return (
-            <div className="login-container align-center">
-                <div className="login-content row">
-                    <h2 className="col-12 text-login">CUSTOMER LOGIN</h2>
+            <div>
+                <div className="align-center">
+                    <h2 className="text-center">CUSTOMER LOGIN</h2>
                     <form>
-                        <table className="align-center-1">
-                            <tbody>
-                                <div className="col-12 form-group login-input">
-                                    <tr>
-                                        <td>Username</td>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                className="form-control-1"
-                                                value={this.state.txtUsername} onChange={(e) => { this.setState({ txtUsername: e.target.value }) }} /></td>
-                                    </tr>
-                                </div>
-                                <div className="col-12 form-group login-input">
-                                    <tr>
-                                        <td>Password</td>
-                                        <td className='custom-input'>
-                                            <input
-                                                className="form-control-2"
-                                                type="password" value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }} /></td>
-                                    </tr>
-                                </div>
-                                <tr>
-                                    <td></td>
-                                    <td><input type="submit" value="LOGIN" onClick={(e) => this.btnLoginClick(e)} /></td>
-                                </tr>
+                        <div className="col-12 form-group login-input">
+                            <table className="align-center">
 
-                            </tbody>
-                        </table>
+                                <div className='username'><div class="form-floating">
+                                    <input type="Username" class="form-control" id="floatingInput" placeholder="Username" value={this.state.txtUsername} onChange={(e) => { this.setState({ txtUsername: e.target.value }) }} />
+                                    <label for="floatingInput">Username</label>
+                                </div></div>
+                                <div className="form-floating">
+                                    <input class="form-control" id="floatingInput" placeholder="Password" type="password" value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }} />
+                                    <label for="floatingInput">Username</label>
+                                </div>
+                                <div className='btn'><input class="btn btn-primary active" type="submit" value="LOGIN" onClick={(e) => this.btnLoginClick(e)} /></div>
+
+
+                            </table>
+                        </div>
                     </form>
                 </div>
+                <FooterComponent />
             </div>
         );
     }
