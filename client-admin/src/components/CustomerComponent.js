@@ -2,6 +2,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import MyContext from '../contexts/MyContext';
+import FooterComponent from './FooterComponent';
 class Customer extends Component {
   static contextType = MyContext; // using this.context to access global state
   constructor(props) {
@@ -116,6 +117,7 @@ class Customer extends Component {
             </table>
           </div>
           : <div />}
+        <FooterComponent />
       </div>
     );
   }

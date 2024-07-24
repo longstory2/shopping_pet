@@ -35,13 +35,16 @@ class Home extends Component {
         return (
             <div>
                 <div className="align-center">
-                    <h2 className="text-center">NEW PRODUCTS</h2>
-                    {newprods}
+                    <div className="text-center">
+                        <h2 className="text-center">NEW PRODUCTS</h2>
+                        {newprods}</div>
                 </div>
                 {this.state.hotprods.length > 0 ?
                     <div className="align-center">
-                        <h2 className="text-center">HOT PRODUCTS</h2>
-                        {hotprods}
+                        <div className="text-center">
+                            <h2 className="text-center">HOT PRODUCTS</h2>
+
+                            {hotprods}</div>
                     </div>
                     : <div />}
                 <FooterComponent />

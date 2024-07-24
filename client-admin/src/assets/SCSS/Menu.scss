@@ -1,62 +1,115 @@
-.border-bottom {
-  border-bottom: 1px solid #ccc;
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-between; 
-  
-}
+@use '../SCSS/scss/' as *;
 
-.float-left {
-   display: flex;
-  ul.menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    margin-right: 828px; 
-    li {
-      display: inline-block;
-      margin-right: 10px; 
-      a {
-        color: #333;
-        text-decoration: none;
-        padding: 5px 10px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-        &:hover {
-          background-color: #f0f0f0;
+.menu-container {
+  @include flex(center, space-between);
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+
+  .left-section {
+    @include flex(center, flex-start);
+
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-right: 20px;
+    }
+  }
+
+  .menu-wrapper {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+
+    #toggle {
+      font-size: 20px;
+      cursor: pointer;
+      margin-left: auto;
+      display: none;
+
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+
+      &.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: white;
+        z-index: 1;
+      }
+
+      @media (max-width: 768px) {
+        display: none;
+
+        //toogle
+        &.open {
+          display: block;
+        }
+      }
+
+      .menu {
+        @include flex(center, flex-start);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex-grow: 1;
+
+        li {
+          margin-right: 1px;
+
+          a {
+            color: $txt-color;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: #f0f0f0;
+            }
+          }
+        }
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          text-align: center;
+          width: 100%;
+
+          li {
+            margin: 10px 0;
+          }
+        }
+      }
+
+      .right-section {
+        @include flex(center, flex-end);
+
+        i {
+          margin-right: 15px;
+          font-size: 24px;
+          color: $black;
+          cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+          text-align: center;
+          width: 100%;
+          margin-top: 10px;
         }
       }
     }
   }
 }
 
-.float-right {
-  float: right;
-  margin-top: 7px; 
-  .navbar-text {
-    margin-top: -21px;
-    margin-left: 866px; 
-    
-    i.logout {
-      font-size: 24px; 
-    }
-  }
-}
-
-.float-clear {
-  clear: both;
-}
-
-.footer-logo {
-  width: 150px; 
-}
-
-.logo{
-  width: 100px; 
-  height: auto;
-}
-
-
-i{
-  color: black;
+i.fa-solid.fa-bars {
+  margin-right: 15px;
 }

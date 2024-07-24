@@ -1,43 +1,107 @@
-.logo {
-  width: 100px;
-  height: auto;
-}
+@use '../SCSS/scss/' as *;
 
-.float-right {
-  float: right;
-  margin-top: 7px;
-}
+.menu-container {
+  @include flex(center, space-between);
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
 
-.body-customer {
-  .border-bottom {
-    margin-left: -150px;
-    margin-right: -150px;
+  .left-section {
+    @include flex(center, flex-start);
+
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-right: 20px;
+    }
   }
-}
 
-.float-left {
-  display: flex;
-  margin-top: 5px;
+  .menu-wrapper {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
 
-  ul.menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    margin-right: auto;
+    #toggle {
+      font-size: 20px;
+      cursor: pointer;
+      //margin-left: auto;
+      display: none;
 
-    li {
-      display: inline-block;
-      margin-right: 10px;
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
 
-      a {
-        color: #333;
-        text-decoration: none;
-        padding: 5px 10px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
+    nav {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
 
-        &:hover {
-          background-color: #b4b4b4;
+      &.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: white;
+        z-index: 1;
+      }
+
+      @media (max-width: 768px) {
+        display: none;
+
+        //toogle
+        &.open {
+          display: block;
+        }
+      }
+
+      .menu {
+        @include flex(center, flex-start);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin-right: 1px;
+
+          a {
+            color: $txt-color;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: #f0f0f0;
+            }
+          }
+        }
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          text-align: center;
+          width: 100%;
+
+          li {
+            margin: 10px 0;
+          }
+        }
+      }
+
+      .right-section {
+        @include flex(center, flex-end);
+
+        i {
+          font-size: 24px;
+          color: $black;
+          cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+          text-align: center;
+          width: 100%;
+          margin-top: 10px;
         }
       }
     }

@@ -1,0 +1,64 @@
+.customer {
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+  
+    .table th,
+    .table td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+  
+    .table-dark {
+      background-color: #343a40;
+      color: #fff;
+    }
+  
+    .align-center {
+      text-align: center;
+    }
+  
+    .link {
+      cursor: pointer;
+      color: #007bff;
+      text-decoration: underline;
+      &:hover {
+        color: #0056b3;
+      }
+    }
+  
+    /* Responsive */
+    @media (max-width: 768px) {
+      .table {
+        font-size: 0.9rem; /* Giảm kích thước font cho bảng trên màn hình nhỏ */
+      }
+  
+      .table th,
+      .table td {
+        padding: 8px; /* Giảm padding cho các ô bảng */
+      }
+  
+      .img-preview {
+        max-height: 150px; /* Giới hạn chiều cao của hình ảnh để phù hợp với màn hình nhỏ */
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .table {
+        font-size: 0.8rem; /* Giảm kích thước font thêm cho màn hình rất nhỏ */
+      }
+  
+      .table th,
+      .table td {
+        padding: 5px; /* Giảm padding thêm cho các ô bảng */
+      }
+  
+      .img-preview {
+        max-height: 100px; /* Giới hạn chiều cao của hình ảnh cho màn hình rất nhỏ */
+      }
+    }
+  }
+  

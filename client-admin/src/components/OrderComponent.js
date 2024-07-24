@@ -2,6 +2,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import MyContext from '../contexts/MyContext';
+import FooterComponent from './FooterComponent';
 
 class Order extends Component {
     static contextType = MyContext; // using this.context to access global state
@@ -26,7 +27,7 @@ class Order extends Component {
                 <td>
                     {item.status === 'PENDING' ? (
                         <div>
-                            <span className="link" onClick={() => this.lnkApproveClick(item._id)}>APPROVE</span> || 
+                            <span className="link" onClick={() => this.lnkApproveClick(item._id)}>APPROVE</span> ||
                             <span className="link" onClick={() => this.lnkCancelClick(item._id)}>CANCEL</span>
                         </div>
                     ) : (
@@ -58,7 +59,7 @@ class Order extends Component {
                         <h2 className="text-center">ORDER LIST</h2>
                         <table className="table table-bordered" border="1">
                             <tbody>
-                                
+
                                 <tr className="datatable">
                                     <th className="table-dark">ID</th>
                                     <th className="table-dark">Creation date</th>
@@ -92,6 +93,7 @@ class Order extends Component {
                         </div>
                     )}
                 </div>
+                <FooterComponent />
             </div>
         );
     }

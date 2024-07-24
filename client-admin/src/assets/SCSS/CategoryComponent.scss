@@ -9,9 +9,9 @@
 
 .table-container {
   width: 100%;
-  max-width: 1200px; /* Optional: Set a max width for larger screens */
+  max-width: 1200px;
   padding: 20px;
-  box-sizing: border-box; /* Ensure padding is included in the width */
+  box-sizing: border-box;
 }
 
 .table {
@@ -29,4 +29,26 @@
 .table-dark {
   background-color: #343a40;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .category-container {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+
+  .table-container {
+    padding: 10px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .table th {
+    text-align: center;
+  }
 }

@@ -1,3 +1,5 @@
+@use '../SCSS/scss/' as *;
+
 .page-container {
   width: 100%;
   display: flex;
@@ -8,36 +10,119 @@
 
 .footer-container {
   width: 100%;
-  background-color: #f8f9fa; /* Example background color */
-  padding: 20px 0; /* Padding for top and bottom */
+  background-color: #f8f9fa;
+  padding: 20px 0;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
 .contact-list {
-  width: 30%; /* Adjust width as needed */
+  width: 30%;
   margin-bottom: 20px;
+
+  h5 {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  p {
+    margin: 5px 0;
+  }
+
+  .email-contact {
+    display: flex;
+
+    input {
+      flex: 1;
+      margin-right: 10px;
+    }
+  }
 }
 
-.contact-list h5 {
-  margin-bottom: 10px;
-  font-weight: bold;
+.dienthoai {
+  margin-right: 160px;
 }
 
-.contact-list p {
-  margin: 5px 0;
+.footer {
+  position: relative;
+  padding: 6rem 2rem;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__content {
+    max-width: 1000px;
+
+    &__logo {
+      @include flex(center, center);
+      margin-bottom: 3rem;
+    }
+
+    &__menus {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      font-size: 12px;
+
+      @include mobile {
+        grid-template-columns: repeat(2, 1fr);
+        font-size: 12px;
+      }
+
+      @include tablet {
+        grid-template-columns: repeat(3, 1fr);
+        font-size: 12px;
+      }
+    }
+
+    &__menu {
+      @include flex(flex-start, flex-start);
+      flex-direction: column;
+      margin-top: 1rem;
+
+      font-size: 1.5rem;
+      font-weight: 600;
+
+      &>*~* {
+        margin-top: 1rem;
+      }
+    }
+  }
 }
 
-.email-contact {
-  display: flex;
-}
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 12px;
+  }
 
-.email-contact input {
-  flex: 1;
-  margin-right: 10px;
-}
-.dienthoai{
-   
-    margin-right: 160px;
+  .contact-list {
+    width: auto;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 12px;
+
+    h5 {
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .dienthoai {
+      margin-right: 0;
+      font-size: 12px;
+    }
+  }
+
+  .email-contact {
+    flex-direction: column;
+    font-size: 12px;
+
+    input {
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+  }
 }

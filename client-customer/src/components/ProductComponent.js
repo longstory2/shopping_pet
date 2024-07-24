@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import withRouter from '../utils/withRouter';
 import FooterComponent from './FooterComponent';
+import '../assets/SCSS/Product.scss';
 
 class Product extends Component {
     constructor(props) {

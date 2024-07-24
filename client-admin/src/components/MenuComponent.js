@@ -5,35 +5,56 @@ import { Link } from 'react-router-dom';
 import image from '../assets/Image/logo_vanlang.png';
 import "../assets/SCSS/Menu.scss";
 import MyContext from '../contexts/MyContext';
+
 class Menu extends Component {
-  static contextType = MyContext; // using this.context to access global state
-  render() {
-    return (
-      <div className="border-bottom">
-        <div className="float-left">
-        <div className='image'>
-              <img src={image} className="logo" alt="Logo" />
-           </div>
-          <ul className="menu">
-            <li className="menu"><Link to='/admin/home'>Home</Link></li>
-            <li className="menu"><Link to='/admin/category'>Category</Link></li>
-            <li className="menu"><Link to='/admin/product'>Product</Link></li>
-            <li className="menu"><Link to='/admin/order'>Order</Link></li>
-            <li className="menu"><Link to='/admin/customer'>Customer</Link></li>
-          </ul>
-        </div>
-        <div className="float-right">
-          {/* Hello <b>{this.context.username}</b> | */}
-          <Link to='/admin/home' onClick={() => this.lnkLogoutClick()}><i class="fa-solid fa-arrow-right-from-bracket"></i></Link>
-        </div>
-        <div className="float-clear" />
-      </div>
-    );
+  static contextType = MyContext;
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuOpen: false
+    };
   }
-  // event-handlers
+
+  toggleMenu = () => {
+    this.setState(prevState => ({
+      menuOpen: !prevState.menuOpen
+    }));
+  }
+
   lnkLogoutClick() {
     this.context.setToken('');
     this.context.setUsername('');
   }
+
+  render() {
+    return (
+      <div className="menu-container border-bottom">
+        <div className="left-section">
+          <img src={image} className="logo" alt="Logo" />
+        </div>
+        <div className="menu-wrapper">
+          <div id='toggle' onClick={this.toggleMenu}>
+            <i className="fa-solid fa-bars"></i>
+          </div>
+          <nav className={this.state.menuOpen ? 'open' : ''}>
+            <ul className="menu">
+              <li><Link to='/admin/home'>Home</Link></li>
+              <li><Link to='/admin/category'>Category</Link></li>
+              <li><Link to='/admin/product'>Product</Link></li>
+              <li><Link to='/admin/order'>Order</Link></li>
+              <li><Link to='/admin/customer'>Customer</Link></li>
+            </ul>
+            <div className="right-section">
+              <Link to='/admin/home' onClick={() => this.lnkLogoutClick()}>
+                <i className="fa-solid fa-arrow-right-from-bracket"></i>
+              </Link>
+            </div>
+          </nav>
+        </div>
+      </div>
+    );
+  }
 }
+
 export default Menu;

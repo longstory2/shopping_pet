@@ -49,7 +49,7 @@ class Product extends Component {
                             <tr className="thead-dark">
                                 <th className="table-dark">ID</th>
                                 <th className="table-dark">Name</th>
-                                <th className="table-dark">Price</th>
+                                <th className="table-dark">Price<span>$</span></th>
                                 <th className="table-dark">Creation date</th>
                                 <th className="table-dark">Category</th>
                                 <th className="table-dark">Image</th>

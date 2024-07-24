@@ -1,0 +1,52 @@
+// .align-center {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-wrap: wrap;
+//     /* Cho phép các phần tử con chuyển hàng khi cần thiết */
+//     padding: 20px;
+//     /* Khoảng cách giữa các phần tử */
+// }
+
+// .text-center {
+//     text-align: center;
+// }
+
+// .inline {
+//     width: 250px;
+//     /* Độ rộng mỗi sản phẩm */
+//     margin: 10px;
+//     /* Khoảng cách giữa các sản phẩm */
+//     text-align: center;
+
+//     figure {
+//         margin: 0;
+//         padding: 0;
+
+//         img {
+//             max-width: 100%;
+//             /* Ảnh có chiều rộng tối đa là 100% của phần tử cha */
+//             height: auto;
+//             /* Đảm bảo tỷ lệ chiều cao tự động */
+//         }
+
+//         figcaption {
+//             margin-top: 10px;
+//             font-size: 16px;
+//         }
+//     }
+// }
+
+// @media (max-width: 768px) {
+//     .inline {
+//         width: 100%;
+//         /* 100% chiều rộng để chia đều các sản phẩm trên màn hình nhỏ hơn 768px */
+//     }
+// }
+figure.caption-right {
+    padding-left: 300px;
+}
+
+button#btn1 {
+    float: left;
+}
